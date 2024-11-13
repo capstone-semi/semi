@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='icons/logo.svg') }}" alt="응급콜 아이콘" class="icon">
+            <h1>윌리어리</h1>
+            <p>당신을 위한 맞춤형 관리 다이어리</p>
+        </div>
+        <div class="login-methods">
+            <p>Login</p>
+            <input type="email" id="email" placeholder="Your email">
+            <input type="password" id="emain" placeholder="Your password">
+            <div class="or">Or</div>
+            <button onclick="continueLogin()" class="btn continue">Continue</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
