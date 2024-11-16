@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: calc(100vh - 55px);
+    width : 100%;
+    background: #FEF6DF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-container {
+    width: 90%;
+    padding: 20px;
+    text-align: center;
+}
+
+.signup-container h1 {
+    color : #4D6D67;
+    font-size : 30px;
+    margin-bottom: 20px;
+}
+
+.signup-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    align-self: start;
+    margin-bottom: 5px;
+    font-size : 12px;
+}
+
+input[type="text"],
+input[type="id"],
+input[type="password"] {
+    width : 100%;
+    height : 40px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+}
+.gender {
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 10px;
+}
+
+.gender button {
+    flex: 1;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color : #8F8F8F;
+    background-color: white;
+}
+
+.gender button:focus,
+.gender button:hover {
+    color : white;
+    background-color: #4D6D67;
+}
+
+.gender-btn.selected {
+    color : white;
+    background-color: #4D6D67;
+}
+
+button[type="submit"] {
+    padding: 10px;
+    height : 40px;
+    background-color: #4D6D67;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: gray;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top : 5px;
+}
+.terms label {
+    margin-top : 4px;
+}
+
+.terms input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+p {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 15px;
+}
+
+a {
+    font-size: 0.9em;
+    margin-top: 15px;
+    color : #4D6D67;
+    text-decoration: none;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    width : 300px;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    color : #4D6D67;
+    font-size : 20px;
+    margin-bottom : 20px;
+}
+
+.modal-content p {
+    margin : 10px;
+}
+
+#closeModal {
+    display: flex;
+    float: right;
+    margin-top: 20px;
+    color: #4D6D67;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+#closeModal:hover {
+    color : black;
+}

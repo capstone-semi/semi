@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+</head>
+<body>
+    <div class="signup-container">
+        <h1>회원가입</h1>
+        <form action="{{ url_for('user_bp.signup') }}" method="post">
+            <label for="nickname">닉네임</label>
+            <input type="text" id="nickname" name="nickname" placeholder="닉네임 입력" required>
+            
+            <label for="id">아이디</label>
+            <input type="id" id="id" name="id" placeholder="아이디 입력" required>
+            
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호 입력" required>
+            
+            <label>성별</label>
+                <div class="gender">
+                    <button type="button" class="gender-btn" data-value="female">여자</button>
+                    <button type="button" class="gender-btn" data-value="male">남자</button>
+                    <input type="hidden" id="gender" name="gender">
+                </div>
+            
+            <label for="age">나이</label>
+            <input type="text" id="age" name="age" placeholder="나이 입력">
+            
+            <label for="diagnosis">진단명</label>
+            <input type="text" id="diagnosis" name="diagnosis" placeholder="진단명 입력">
+            
+            <div class="terms">
+                <input type="checkbox" id="termsAgree" required>
+                <label for="termsAgree">이용약관 및 개인정보 처리방침에 동의합니다.</label>
+            </div>
+            
+            <button type="submit">계정 만들기</button>
+        </form>
+        <p>이미 계정이 있으신가요? <a href="{{ url_for('app_bp.main') }}">로그인</a></p>
+    </div>
+
+    {% if error_message %}
+    <div class="modal" id="errorModal">
+        <div class="modal-content">
+            <h2>{{ error_title }}</h2> 
+            <p>{{ error_message }}</p> 
+            <button id="closeModal">닫기</button>
+        </div>
+    </div>
+    <script>
+        // 모달 표시
+        document.getElementById('errorModal').style.display = 'flex';
+
+        // 모달 닫기 버튼 기능
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('errorModal').style.display = 'none';
+        });
+    </script>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <script>
+                alert("{{ messages[0] }}");
+            </script>
+        {% endif %}
+    {% endwith %}
+    
+    <script src="../static/js/signup.js"></script>
+    </div>
+</body>
+</html>

@@ -10,18 +10,26 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="{{ url_for('static', filename='icons/logo.svg') }}" alt="응급콜 아이콘" class="icon">
+            <img src="{{ url_for('static', filename='icons/logo.svg') }}" alt="로고 아이콘" class="icon">
             <h1>윌리어리</h1>
             <p>당신을 위한 맞춤형 관리 다이어리</p>
         </div>
         <div class="login-methods">
-            <p>Login</p>
-            <input type="email" id="email" placeholder="Your email">
-            <input type="password" id="emain" placeholder="Your password">
-            <div class="or">Or</div>
-            <button onclick="continueLogin()" class="btn continue">Continue</button>
+            <input type="email" id="id" name="id" placeholder="아이디 입력">
+            <input type="password" id="password" name="password" placeholder="비밀번호 입력">
+            <button onclick="continueLogin()" class="btn continue">로그인</button>
+            <p>아직 회원이 아닌가요? <a href="{{ url_for('app_bp.signup') }}">회원가입</a></p>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="modal" id="errorModal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modalTitle">오류</h2> 
+            <p id="modalMessage">아이디가 일치하지 않습니다.</p> 
+            <button id="closeModal">닫기</button>
+        </div>
+    </div>
+
+    <script src="../static/js/login.js"></script>
 </body>
 </html>

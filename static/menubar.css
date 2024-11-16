@@ -44,6 +44,12 @@
 }
 .menubar .active a,
 .menubar li a:hover {
-    color: #007bff;
+    color: #4D6D67;
+    font-weight: bold;
+}
+
+.menubar .active a .icon,
+.menubar li a .icon:hover {
+    color: #4D6D67;
     font-weight: bold;
 }

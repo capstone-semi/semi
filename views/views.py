@@ -1,14 +1,17 @@
 from flask import Blueprint, render_template
-from semi.models.user_model import User
 
-app = Blueprint('app', __name__)
+app = Blueprint('app_bp', __name__)
 
 @app.route('/')
-def home():
+def main():
     return render_template('index.html')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
 @app.route('/home')
-def home_page():
+def home():
     return render_template('home.html')
 
 @app.route('/test')
