@@ -10,7 +10,85 @@
 </head>
 <body>
     {% include 'menubar.html' %}
-    <h1>메인 페이지에 오신 것을 환영합니다!</h1>
-    
+    <div class="container">
+        <h2>오늘의 기록</h2>
+        <!-- 달력 -->
+        <div class="calendar-container">
+            <!-- 월 선택 -->
+            <div class="month-header">
+                <span id="current-month">9월</span>
+                <button id="calendar-icon"><img src="../static/icons/calendar.svg" alt="캘린더 아이콘"></button>
+            </div>
+            <!-- 날짜 표시 -->
+            <div class="date-list">
+                <span class="date" id="date-17">17</span>
+                <span class="date" id="date-18">18</span>
+                <span class="date" id="date-19">19</span>
+                <span class="date" id="date-20">20</span>
+                <span class="date" id="date-21">21</span>
+                <span class="date" id="date-22">22</span>
+                <span class="date" id="date-23">23</span>
+            </div>
+        </div>
+
+        <!-- PTSD 분석 결과 -->
+        <div class="analysis-container">
+            <div class="header">
+                <p>2024.10.13 19:08</p>
+                <h2>오늘의 일기 분석결과</h2>
+                <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
+            </div>
+            <div class="analysis-content">
+                <div class="warning-section">
+                    <span class="warning-label">주의</span>
+                    <span class="disease">PTSD</span>
+                </div>
+                <div class="result-box">
+                    <p class="message">PTSD일 가능성이 높습니다.</p>
+                    <div class="donut-container">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg"
+                                d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                stroke-dasharray="65, 100"
+                                d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="percentage">65%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 일기 -->
+        <div class="diary-container">
+            <div class="diary-header">
+                <div class="date-title">
+                    <p class="date">2024.10.13 19:08</p>
+                    <h2 class="title">오늘의 이야기</h2>
+                </div>
+                <a href="#" class="view-all">전체 보기 &gt;</a>
+            </div>
+            <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
+            <div class="diary-content">
+                <p>오늘은 나의 이야기를 해보려고 한다.<br>
+                오늘 나의 하루는 정말 많은 일들이 있었다.<br>
+                오늘부터 차근차근 꾸준히 기록하도록 노력해보겠다.~~<br>
+                ...</p>
+            </div>
+            <button class="write-icon" onclick="goToWritePage()">
+                <img src="../static/icons/pen.svg" alt="연필 아이콘">
+            </button>
+        </div>
+    </div>
+    <script src="../static/js/home.js"></script>
+    <script>
+        function goToWritePage() {
+            window.location.href = "/diaryWrite";
+        }
+    </script>
 </body>
 </html>

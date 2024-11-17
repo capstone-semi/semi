@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%; 
+    width: 100%;
+    background: #FEF6DF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%; 
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin : auto 0;
+}
+
+
+.header-bar {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    padding: 15px 20px;
+    z-index: 1000;
+}
+
+.header-bar h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #4D6D67;
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #4D6D67;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 5px;
+    position: absolute; 
+    left: 10px; 
+}
+
+.back-button:hover {
+    color: #3b82f6;
+}
+
+
+/* 날짜와 아이콘 */
+.header p {
+    font-size: 16px;
+    color: #4D6D67;
+    text-align: center;
+    font-weight: bold;
+}
+
+.header .icon {
+    font-size: 18px;
+    margin-left: 5px;
+    margin-top :10px;
+}
+
+/* 입력 필드 스타일 */
+.title-input {
+    align-items: center;
+    margin : 20px auto;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background: #FEF6DF;
+    border-radius: 10px;
+    outline: none;
+    color: #333;
+}
+
+.title-input::placeholder {
+    color: #999;
+}
+
+.content-input {
+    width : 100%;
+    height: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    resize: none;
+    background: #FEF6DF;
+    color: #333;
+    margin-bottom : 20px;
+}
+
+.content-input::placeholder {
+    color: #999;
+}
+
+/* 작성 버튼 스타일 */
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #4D6D67;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom :20px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #3B554F;
+}

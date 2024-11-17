@@ -14,6 +14,10 @@ def signup():
 def home():
     return render_template('home.html')
 
+@app.route('/diaryWrite')
+def diaryWrite():
+    return render_template('diaryWrite.html')
+
 @app.route('/test')
 def test():
     return render_template('test.html')
@@ -25,6 +29,10 @@ def challenge():
 @app.route('/result')
 def result():
     return render_template('result.html')
+
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
 
 @app.route('/call')
 def call():

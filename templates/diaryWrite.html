@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일기 작성 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='menubar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='diaryWrite.css') }}">
+</head>
+<body>
+    {% include 'menubar.html' %}
+    <div class="container">
+    <div class="write-container">
+        <div class="header-bar">
+        <button class="back-button" onclick="goBack()">&#60;</button>
+        <h2>오늘의 기록</h2>
+    </div>
+        <div class="header">
+            <p>2024년 09월 29일 <span class="icon"><img src="../static/icons/calendar.svg" alt="캘린더 아이콘"></span></p>
+        </div>
+        <div class="form">
+            <input type="text" class="title-input" placeholder="제목을 작성해주세요" />
+            <textarea class="content-input" placeholder="글을 작성해주세요."></textarea>
+            <button class="submit-button">작성</button>
+        </div>
+    </div>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
