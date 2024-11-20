@@ -93,7 +93,7 @@ body, html {
 .header h2 {
     font-size: 18px;
     margin: 10px 0 10px;
-    color : #00394C;
+    color : black;
     text-align: start;
 }
 
@@ -110,6 +110,24 @@ body, html {
 
 .warning-label {
     background-color: #FDD563;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.danger-label {
+    background-color: #D43510;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.normal-label {
+    background-color: #599468;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
@@ -141,8 +159,8 @@ body, html {
 
 .donut-container {
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 .circular-chart {
@@ -183,6 +201,7 @@ body, html {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 300px;
     position: relative;
+    min-height:300px;
 }
 
 .diary-header {
@@ -254,5 +273,5 @@ body, html {
 }
 
 .write-icon:hover {
-    background-color: #3b82f6;
+    background-color: #00394C;
 }

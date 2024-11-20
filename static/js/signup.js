@@ -55,7 +55,7 @@ function handleFormSubmit(event) {
     const gender = document.getElementById('gender').value.trim();
     const termsAgree = document.getElementById('termsAgree').checked;
 
-    let errorMessage = validateFormInputs(nickname, id, password, gender, age, termsAgree);
+    let errorMessage = validateFormInputs(nickname, id, password, age, gender, termsAgree);
     
     if (errorMessage) {
         event.preventDefault();
@@ -63,12 +63,13 @@ function handleFormSubmit(event) {
     }
 }
 
-function validateFormInputs(nickname, id, password, gender, age, termsAgree) {
+function validateFormInputs(nickname, id, password, age, gender, termsAgree) {
     if (!nickname) return '닉네임을 입력해주세요.';
     if (!id) return '아이디를 입력해주세요.';
     if (!password) return '비밀번호를 입력해주세요.';
-    if (!gender) return '성별을 선택해주세요.';
     if (!age) return '나이를 입력해주세요.';
+    if (!gender) return '성별을 선택해주세요.';
+    if (gender === 'unselected') return '성별을 선택해주세요.';
     if (!termsAgree) return '이용약관 및 개인정보 처리방침에 동의해주세요.';
     return '';
 }

@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자가평가 페이지</title>
+    <title>윌리어리</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='menubar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
 </head>
 <body>
     {% include 'menubar.html' %}
-    <h1>자가평가 페이지에 오신 것을 환영합니다!</h1>
-
+    <div class="container">
+        <div class="write-container">
+            <div class="header-bar">
+            <h2>자가진단</h2>
+        </div>
+    </div>
 </body>
 </html>

@@ -11,3 +11,5 @@ class Diary(db.Model):
     uid = db.Column(db.Integer, db.ForeignKey('user.uid'), nullable=False)
 
     user = db.relationship('User', backref=db.backref('user_diaries', lazy=True, overlaps="author, diaries"))
+
+    analyses = db.relationship('Analysis', back_populates='diary', lazy='dynamic')

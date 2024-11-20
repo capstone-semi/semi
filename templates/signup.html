@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
+    <title>윌리어리</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
 </head>
@@ -24,13 +24,13 @@
                 <div class="gender">
                     <button type="button" class="gender-btn" data-value="female">여자</button>
                     <button type="button" class="gender-btn" data-value="male">남자</button>
-                    <input type="hidden" id="gender" name="gender">
+                    <input type="hidden" id="gender" name="gender" value="unselected" required>
                 </div>
             
             <label for="age">나이</label>
-            <input type="text" id="age" name="age" placeholder="나이 입력">
+            <input type="text" id="age" name="age" placeholder="나이 입력" required>
             
-            <label for="diagnosis">진단명</label>
+            <label for="diagnosis">진단명(선택)</label>
             <input type="text" id="diagnosis" name="diagnosis" placeholder="진단명 입력">
             
             <div class="terms">

@@ -12,7 +12,8 @@ load_dotenv()
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
-    app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
+    secret_key = os.getenv('SECRET_KEY', os.urandom(24))
+    app.secret_key = secret_key
     
     db.init_app(app)
 
@@ -27,5 +28,8 @@ def create_app():
     
     from .views.user_view import user_bp
     app.register_blueprint(user_bp)
+
+    from .views.diary_view import diary_bp
+    app.register_blueprint(diary_bp, url_prefix='/diary')
 
     return app

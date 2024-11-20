@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홈 페이지</title>
+    <title>윌리어리</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='menubar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
@@ -38,13 +38,22 @@
                 <h2>오늘의 일기 분석결과</h2>
                 <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
             </div>
+            {% if analyses %}
             <div class="analysis-content">
                 <div class="warning-section">
-                    <span class="warning-label">주의</span>
-                    <span class="disease">PTSD</span>
+                    {% if highest_disease_name == None %}
+                        <span class="normal-label">양호</span>
+                    {% elif highest_probability >= 80 %}
+                        <span class="danger-label">위험</span>
+                    {% elif highest_probability >= 50 %}
+                        <span class="warning-label">주의</span>
+                    {% else %}
+                        <span class="normal-label">양호</span>
+                    {% endif %}
+                    <span class="disease">{{ highest_disease_name }}</span>
                 </div>
                 <div class="result-box">
-                    <p class="message">PTSD일 가능성이 높습니다.</p>
+                    <p class="message">{{ highest_disease_name }}일 가능성이 높습니다.</p>
                     <div class="donut-container">
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg"
@@ -52,37 +61,55 @@
                                     a 15.9155 15.9155 0 0 1 0 31.831
                                     a 15.9155 15.9155 0 0 1 0 -31.831" />
                             <path class="circle"
-                                stroke-dasharray="65, 100"
+                                stroke-dasharray="{{ highest_probability }}, 100"
                                 d="M18 2.0845
                                     a 15.9155 15.9155 0 0 1 0 31.831
                                     a 15.9155 15.9155 0 0 1 0 -31.831" />
                         </svg>
-                        <div class="percentage">65%</div>
+                        <div class="percentage">{{ highest_probability | round(0) }}%</div>
                     </div>
                 </div>
             </div>
+            {% else %}
+                <p>분석 결과가 없습니다.</p>
+            {% endif %}
         </div>
 
         <!-- 일기 -->
+        {% if diary %}
         <div class="diary-container">
             <div class="diary-header">
                 <div class="date-title">
-                    <p class="date">2024.10.13 19:08</p>
-                    <h2 class="title">오늘의 이야기</h2>
+                    <p class="date">{{ diary.diarydate.strftime('%Y-%m-%d') }}</p>
+                    <h2 class="title">{{ diary.title }}</h2>
                 </div>
                 <a href="#" class="view-all">전체 보기 &gt;</a>
             </div>
             <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
             <div class="diary-content">
-                <p>오늘은 나의 이야기를 해보려고 한다.<br>
-                오늘 나의 하루는 정말 많은 일들이 있었다.<br>
-                오늘부터 차근차근 꾸준히 기록하도록 노력해보겠다.~~<br>
-                ...</p>
+                <p>{{ diary.content }}</p>
             </div>
             <button class="write-icon" onclick="goToWritePage()">
                 <img src="../static/icons/pen.svg" alt="연필 아이콘">
             </button>
         </div>
+        {% else %}
+            <div class="diary-container">
+                <div class="diary-header">
+                    <div class="date-title">
+                        <p class="date">{{ selected_date.strftime('%Y-%m-%d') }}</p>
+                        <h2 class="title">다이어리</h2>
+                    </div>
+                </div>
+                <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
+                <div class="diary-content">
+                    <p>{{ selected_date.strftime('%Y-%m-%d') }}에 작성된 일기가 없습니다.</p>
+                </div>
+                <button class="write-icon" onclick="goToWritePage()">
+                    <img src="../static/icons/pen.svg" alt="연필 아이콘">
+                </button>
+            </div>
+        {% endif %}
     </div>
     <script src="../static/js/home.js"></script>
     <script>

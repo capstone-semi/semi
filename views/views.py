@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template
 
+from semi.views.user_view import login_required
+
 app = Blueprint('app_bp', __name__)
 
 @app.route('/')
@@ -10,11 +12,8 @@ def main():
 def signup():
     return render_template('signup.html')
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
-
 @app.route('/diaryWrite')
+@login_required
 def diaryWrite():
     return render_template('diaryWrite.html')
 
@@ -23,16 +22,14 @@ def test():
     return render_template('test.html')
 
 @app.route('/challenge')
+@login_required
 def challenge():
     return render_template('challenge.html')
 
 @app.route('/result')
+@login_required
 def result():
     return render_template('result.html')
-
-@app.route('/mypage')
-def mypage():
-    return render_template('mypage.html')
 
 @app.route('/call')
 def call():

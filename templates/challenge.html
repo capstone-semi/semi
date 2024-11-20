@@ -3,14 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>챌린지 페이지</title>
+    <title>윌리어리</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='menubar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='challenge.css') }}">
 </head>
 <body>
     {% include 'menubar.html' %}
-    <h1>챌린지 페이지에 오신 것을 환영합니다!</h1>
+    <div class="container">
+        <div class="write-container">
+            <div class="header-bar">
+            <h2>챌린지</h2>
+        </div>
+        <div class="progress-container">
+            <div class="mission-header">
+                <span class="mission-title">나의 미션</span>
+                <span class="mission-days">D+5</span>
+            </div>
+            <div class="mission-description">아침에 일어나 햇볕을 30분 이상 받기</div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 80%;"></div>
+                <span class="progress-percentage">80%</span>
+            </div>
+        </div>
+        <div class="icon-grid">
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category1.svg" alt="신체활동"></div>
+                <div class="icon-label">신체활동</div>
+            </div>
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category2.svg" alt="감사연습"></div>
+                <div class="icon-label">감사연습</div>
+            </div>
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category3.svg" alt="명상"></div>
+                <div class="icon-label">명상</div>
+            </div>
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category4.svg" alt="자신감 얻기"></div>
+                <div class="icon-label">자신감 얻기</div>
+            </div>
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category5.svg" alt="대화"></div>
+                <div class="icon-label">대화</div>
+            </div>
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category6.svg" alt="좋은 수면"></div>
+                <div class="icon-label">좋은수면</div>
+            </div>
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category7.svg" alt="식습관"></div>
+                <div class="icon-label">식습관</div>
+            </div>
+            <div class="icon-item">
+                <div class="icon"><img src="../static/icons/category8.svg" alt="도전"></div>
+                <div class="icon-label">식습관</div>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="챌린지를 검색해보세요.">
+        </div>
+        <div class="card-container">
+            <div class="activity-card">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename='icons/logo.svg') }}" alt="로고 아이콘" class="icon">
+                </div>
+                <div class="card-info">
+                    <p class="card-title">감사일기 쓰기</p>
+                    <p class="card-subtitle">감사일기</p>
+                    <div class="card-participants">
+                        <img src="{{ url_for('static', filename='icons/person.svg') }}" alt="로고 아이콘">
+                        <span>12명이 참여중</span>
+                    </div>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename='icons/logo.svg') }}" alt="로고 아이콘" class="icon">
+                </div>
+                <div class="card-info">
+                    <p class="card-title">아침에 일어나기</p>
+                    <p class="card-subtitle">신체활동</p>
+                    <div class="card-participants">
+                        <img src="{{ url_for('static', filename='icons/person.svg') }}" alt="로고 아이콘">
+                        <span>20명이 참여중</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text">더 많은 챌린지 살펴보기 ></p>
+        <button class="write-icon" onclick="goToWritePage()">
+            <img src="../static/icons/plus.svg" alt="더하기 아이콘">
+        </button>
+    </div>
 
 </body>
 </html>

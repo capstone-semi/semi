@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%; 
+    width: 100%;
+    background: #FEF6DF;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container {
+    width: 100%; 
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin : 0 auto;
+}
+
+.header-bar {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    padding: 15px 20px;
+    z-index: 1000;
+}
+
+.header-bar h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #4D6D67;
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    font-size : 20px;
+}
+
+.write-content {
+    justify-content: flex-start;
+    width : 100%;
+    box-sizing: border-box;
+    margin-top: -60px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border : 1px solid #B0B0B0;
+    background-color: #FFFFFF;
+    padding : 5px;
+}
+
+.profile-info h1 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #4D6D67;
+    margin-bottom: 5px;
+}
+
+.profile-info p {
+    font-size: 0.9em;
+    color: #525252;
+}
+
+.stats {
+    min-width : 300px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    border : 1px solid #B0B0B0;
+}
+
+.stat {
+    text-align: center;
+    flex: 1; 
+    padding: 15px 10px;
+    position: relative;
+}
+
+.stat.diary::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #ccc; 
+    height: 100%;
+}
+
+.stat h2 {
+    margin: 0;
+    font-size: 12px;
+    color: #333;
+    text-align: start;
+    margin-bottom: 10px;
+}
+.stat p {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.small {
+    font-size: 10px;
+}
+
+.change.up {
+    font-size: 8px;
+    color: green;
+}
+
+.change.down {
+    font-size: 8px;
+    color: red;
+}
+
+.menu-list {
+    width: 100%;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #333;
+    text-decoration: none; 
+}
+
+.menu-icon-text {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.arrow {
+    font-size: 24px;
+    color: #ccc;
+    flex-basis: 10%;
+    text-align: right;
+}

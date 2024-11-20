@@ -7,3 +7,6 @@ class Analysis(db.Model):
     diaryid = db.Column(db.Integer, db.ForeignKey('diary.diaryid'), nullable=False)
     diseaseId = db.Column(db.Integer, db.ForeignKey('disease.diseaseId'), nullable=False)
     probability = db.Column(db.Float, nullable=False)
+
+    diary = db.relationship('Diary', back_populates='analyses')
+    disease = db.relationship('Disease', back_populates='analyses')

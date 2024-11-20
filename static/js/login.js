@@ -1,4 +1,3 @@
-
 function continueLogin() {
     const userId = document.getElementById('id').value.trim();
     const password = document.getElementById('password').value.trim();
@@ -15,15 +14,14 @@ function continueLogin() {
         },
         body: JSON.stringify({ id: userId, password: password })
     })
-    .then(response => response.json().then(data => ({ status: response.status, body: data })))
-    .then(obj => {
-        if (obj.status === 200 && obj.body.success) {
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
             // 로그인 성공, 홈 페이지로 리다이렉트
             window.location.href = '/home';
         } else {
             // 로그인 실패, 모달창 표시
-            const message = obj.body.message || "로그인에 실패했습니다.";
-            showErrorModal("로그인 실패", message);
+            showErrorModal("로그인 실패", data.message);
         }
     })
     .catch(error => {
@@ -31,6 +29,7 @@ function continueLogin() {
         showErrorModal("오류", "로그인 중 오류가 발생했습니다.");
     });
 }
+
 
 function showErrorModal(title, message) {
     const modal = document.getElementById('errorModal');

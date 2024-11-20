@@ -1,7 +1,7 @@
 <div class="menubar">
     <ul>
         <li class="{% if request.path == '/main' %}active{% endif %}">
-            <a href="{{ url_for('app_bp.home') }}"><img src="{{ url_for('static', filename='icons/home.svg') }}" alt="홈 아이콘" class="icon"> 홈</a>
+            <a href="{{ url_for('user_bp.home') }}"><img src="{{ url_for('static', filename='icons/home.svg') }}" alt="홈 아이콘" class="icon"> 홈</a>
         </li>
         <li class="{% if request.path == '/test' %}active{% endif %}">
             <a href="{{ url_for('app_bp.test') }}"><img src="{{ url_for('static', filename='icons/test.svg') }}" alt="자가진단 아이콘" class="icon"> 자가진단</a>
@@ -13,7 +13,7 @@
             <a href="{{ url_for('app_bp.result') }}"><img src="{{ url_for('static', filename='icons/result.svg') }}" alt="통계 아이콘" class="icon"> 통계</a>
         </li>
         <li class="{% if request.path == '/mypage' %}active{% endif %}">
-            <a href="{{ url_for('app_bp.mypage') }}"><img src="{{ url_for('static', filename='icons/user.svg') }}" alt="마이페이지 아이콘" class="icon"> 마이페이지</a>
+            <a href="{{ url_for('user_bp.mypage') }}"><img src="{{ url_for('static', filename='icons/user.svg') }}" alt="마이페이지 아이콘" class="icon"> 마이페이지</a>
         </li>
     </ul>
 </div>
