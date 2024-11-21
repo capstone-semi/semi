@@ -124,12 +124,46 @@
         footer p {
             font-size: 14px;
         }
+        .header-bar {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%; 
+            padding: 15px 20px;
+            z-index: 1000;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #4D6D67;
+            cursor: pointer;
+            margin-right: 10px;
+            padding: 5px;
+            position: absolute; 
+            left: 10px; 
+        }
+        
+        .back-button:hover {
+            color: #3b82f6;
+        }
     </style>
 </head>
 <body>
     {% include 'menubar.html' %}
+    <div class="header-bar">
+        <button class="back-button" onclick="goBack()">&#60;</button>
+        </div>
 <header>
+    
     <h1>정신건강 위기상담</h1>
+    
+
     <p>긴급한 상황에서 즉시 지원을 받으세요!</p>
 </header>
 
@@ -175,6 +209,10 @@
 <footer>
     <p>© 2024 정신건강복지센터 | 모든 권리 보유</p>
 </footer>
-
+<script>
+    function goBack() {
+        window.location.href="/mypage";
+    }
+</script>
 </body>
 </html>

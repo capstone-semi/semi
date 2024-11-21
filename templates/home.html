@@ -17,7 +17,7 @@
             <!-- 월 선택 -->
             <div class="month-header">
                 <span id="current-month">{{ selected_date.strftime('%m월') }}</span>
-                <button id="calendar-icon"><img src="../static/icons/calendar.svg" alt="캘린더 아이콘"></button>
+                <button id="calendar-icon"><img src="{{ url_for('static', filename='icons/Calendar.svg') }}" alt="캘린더 아이콘" class="icon"></button>
             </div>
             <!-- 날짜 표시 -->
             <div class="date-list">

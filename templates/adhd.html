@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADHD 자가진단</title>
-    <link rel="stylesheet" href="static/style.css"> 
+    <link rel="stylesheet" href="static/style.css">
     <script>
         // 폼 제출 전에 체크된 문항을 검사하여 조건에 맞으면 리디렉션
         function checkAnswers(event) {
@@ -14,7 +14,7 @@
                 let questionValue = document.querySelector(`input[name="question${i}"]:checked`);
                 if (questionValue) {
                     let value = parseInt(questionValue.value);
-                    // "약간 혹은 가끔 그렇다(2)", "자주 그렇다(3)", "매우 자주 그렇다(4)" 에 해당하는 경우
+                    // "약간 혹은 가끔 그렇다(2)", "자주 그렇다(3)", "매우 자주 그렇다(4)"에 해당하는 경우
                     if (value >= 2) {
                         count++;
                     }
@@ -23,15 +23,20 @@
 
             // 4개 이상일 경우 응급콜 페이지로 리디렉션
             if (count >= 4) {
-                window.location.href = "/emergency_call";  // 응급콜 페이지로 이동
+                // 리디렉션 대신 '주의가 필요한 단계입니다' 메시지를 표시
+                goCallModal();
                 event.preventDefault(); // 폼 제출을 막고 리디렉션
+            } else {
+                // 점수가 충분하지 않으면 정상 메시지
+                goHomeModal();
+                event.preventDefault(); // 폼 제출을 막음
             }
         }
     </script>
 </head>
 <body>
     <h1>ADHD 자가진단</h1>
-    <form action="/submit_adhd" method="post">
+    <form action="/submit_adhd" method="post" onsubmit="checkAnswers(event)">
         <p>1. 어떤 일의 어려운 부분은 끝내놓고, 그 일을 마무리 짓지 못해 곤란을 겪은 일이 있습니까?</p>
         <input type="radio" id="q1-option1" name="question1" value="0"> <label for="q1-option1">전혀 그렇지 않다</label><br>
         <input type="radio" id="q1-option2" name="question1" value="1"> <label for="q1-option2">거의 그렇지 않다 (드물게 그렇다)</label><br>
@@ -73,9 +78,53 @@
         <input type="radio" id="q6-option3" name="question6" value="2"> <label for="q6-option3">약간 혹은 가끔 그렇다</label><br>
         <input type="radio" id="q6-option4" name="question6" value="3"> <label for="q6-option4">자주 그렇다</label><br>
         <input type="radio" id="q6-option5" name="question6" value="4"> <label for="q6-option5">매우 자주 그렇다</label><br>
-        <!-- 추가 질문들 -->
+
         <button type="submit">제출</button>
     </form>
-    <a href="/">홈으로</a>
+    <a href="/home">홈으로</a>
+    <!-- 정상모달 -->
+    <div class="modal" id="errorModal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modalTitle">결과</h2>
+            <p id="modalMessage">정상입니다</p>
+            <button id="closeModal">닫기</button>
+        </div>
+    </div>
+    <!-- 비정상모달 -->
+    <div class="modal" id="warningModal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modalTitle">결과</h2>
+            <p id="modalMessage">주의가 필요합니다</p>
+            <button id="closedModal">닫기</button>
+        </div>
+    </div>
+
+    <script src="../static/js/home.js"></script>
+    <script>
+        function goHomeModal() {
+            // 모달을 표시
+            const modal = document.getElementById("errorModal");
+            modal.style.display = "flex";
+
+            // 닫기 버튼 이벤트 리스너
+            const closeModalButton = document.getElementById("closeModal");
+            closeModalButton.addEventListener("click", () => {
+                modal.style.display = "none";
+                window.location.href="/home";
+            });
+        }
+        function goCallModal() {
+            // 모달을 표시
+            const modal = document.getElementById("warningModal");
+            modal.style.display = "flex";
+
+            // 닫기 버튼 이벤트 리스너
+            const closeModalButton = document.getElementById("closedModal");
+            closeModalButton.addEventListener("click", () => {
+                modal.style.display = "none";
+                window.location.href="/emergency_call";
+            });
+        }
+    </script>
 </body>
 </html>

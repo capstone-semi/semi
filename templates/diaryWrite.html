@@ -17,7 +17,7 @@
         <h2>오늘의 기록</h2>
         </div>
         <div class="header">
-            <p>{{ current_date }} <span class="icon"><img src="../static/icons/calendar.svg" alt="캘린더 아이콘"></span></p>
+            <p>{{ current_date }} <span class="icon"><img src="{{ url_for('static', filename='icons/Calendar.svg') }}" alt="캘린더 아이콘" class="icon"></span></p>
         </div>
         <form method="POST" action="{{ url_for('diary_bp.write_diary') }}" class="form">
             <input type="text" name="title" class="title-input" placeholder="제목을 작성해주세요" required />
