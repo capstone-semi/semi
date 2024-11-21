@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>불안장애 자가진단</title>
+    <link rel="stylesheet" href="static/style.css"> 
+    <script>
+        // 폼 제출 전에 체크된 문항을 검사하여 총점이 16점 이상이면 리디렉션
+        function checkAnswers(event) {
+            let totalScore = 0;
+            // 각 문항에 대해 체크된 값을 가져와서 점수를 합산
+            for (let i = 1; i <= 6; i++) {
+                let questionValue = document.querySelector(`input[name="question${i}"]:checked`);
+                if (questionValue) {
+                    let value = parseInt(questionValue.value); // 체크된 답변의 값을 점수로 변환
+                    totalScore += value; // 총점에 추가
+                }
+            }
+
+            // 총점이 16점 이상일 경우 응급콜 페이지로 리디렉션
+            if (totalScore >= 16) {
+                window.location.href = "/emergency_call";  // 응급콜 페이지로 이동
+                event.preventDefault(); // 폼 제출을 막고 리디렉션
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>불안장애 자가진단</h1>
+    <form action="/submit_anxiety" method="post">
+        <label for="question1">가끔씩 몸이 저리고 쑤시며 감각이 마비된 느낌을 받는다</label>
+        <br>
+        <input type="radio" id="q1-option1" name="question1" value="0"> <label for="q1-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q1-option2" name="question1" value="1"> <label for="q1-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q1-option3" name="question1" value="2"> <label for="q1-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q1-option4" name="question1" value="3"> <label for="q1-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question2">흥분된 느낌을 받는다</label>
+        <br>
+        <input type="radio" id="q2-option1" name="question2" value="0"> <label for="q2-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q2-option2" name="question2" value="1"> <label for="q2-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q2-option3" name="question2" value="2"> <label for="q2-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q2-option4" name="question2" value="3"> <label for="q2-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question3">가끔씩 다리가 떨리곤 한다</label>
+        <br>
+        <input type="radio" id="q3-option1" name="question3" value="0"> <label for="q3-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q3-option2" name="question3" value="1"> <label for="q3-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q3-option3" name="question3" value="2"> <label for="q3-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q3-option4" name="question3" value="3"> <label for="q3-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question4">편안하게 쉴 수가 없다</label>
+        <br>
+        <input type="radio" id="q4-option1" name="question4" value="0"> <label for="q4-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q4-option2" name="question4" value="1"> <label for="q4-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q4-option3" name="question4" value="2"> <label for="q4-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q4-option4" name="question4" value="3"> <label for="q4-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question5">매우 나쁜 일이 일어날 것 같은 두려움을 느낀다</label>
+        <br>
+        <input type="radio" id="q5-option1" name="question5" value="0"> <label for="q5-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q5-option2" name="question5" value="1"> <label for="q5-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q5-option3" name="question5" value="2"> <label for="q5-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q5-option4" name="question5" value="3"> <label for="q5-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question6">어지러움(현기증)을 느낀다</label>
+        <br>
+        <input type="radio" id="q6-option1" name="question6" value="0"> <label for="q6-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q6-option2" name="question6" value="1"> <label for="q6-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q6-option3" name="question6" value="2"> <label for="q6-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q6-option4" name="question6" value="3"> <label for="q6-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question7">가끔씩 심장이 두근거리고 빨리 뛴다</label>
+        <br>
+        <input type="radio" id="q7-option1" name="question7" value="0"> <label for="q7-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q7-option2" name="question7" value="1"> <label for="q7-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q7-option3" name="question7" value="2"> <label for="q7-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q7-option4" name="question7" value="3"> <label for="q7-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question8">침착하지 못한다</label>
+        <br>
+        <input type="radio" id="q8-option1" name="question8" value="0"> <label for="q8-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q8-option2" name="question8" value="1"> <label for="q8-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q8-option3" name="question8" value="2"> <label for="q8-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q8-option4" name="question8" value="3"> <label for="q8-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question9">자주 겁을 먹고 무서움을 느낀다</label>
+        <br>
+        <input type="radio" id="q9-option1" name="question9" value="0"> <label for="q9-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q9-option2" name="question9" value="1"> <label for="q9-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q9-option3" name="question9" value="2"> <label for="q9-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q9-option4" name="question9" value="3"> <label for="q9-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question10">신경이 과민 되어 왔다</label>
+        <br>
+        <input type="radio" id="q10-option1" name="question10" value="0"> <label for="q10-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q10-option2" name="question10" value="1"> <label for="q10-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q10-option3" name="question10" value="2"> <label for="q10-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q10-option4" name="question10" value="3"> <label for="q10-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question11">때때로 기운이 없고 무기력하다</label>
+        <br>
+        <input type="radio" id="q11-option1" name="question11" value="0"> <label for="q11-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q11-option2" name="question11" value="1"> <label for="q11-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q11-option3" name="question11" value="2"> <label for="q11-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q11-option4" name="question11" value="3"> <label for="q11-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question12">가끔씩 숨이 차고 호흡이 가쁘다</label>
+        <br>
+        <input type="radio" id="q12-option1" name="question12" value="0"> <label for="q12-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q12-option2" name="question12" value="1"> <label for="q12-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q12-option3" name="question12" value="2"> <label for="q12-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q12-option4" name="question12" value="3"> <label for="q12-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question13">대인 관계에서 불편함을 느낀다</label>
+        <br>
+        <input type="radio" id="q13-option1" name="question13" value="0"> <label for="q13-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q13-option2" name="question13" value="1"> <label for="q13-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q13-option3" name="question13" value="2"> <label for="q13-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q13-option4" name="question13" value="3"> <label for="q13-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question14">기억력이 떨어졌다</label>
+        <br>
+        <input type="radio" id="q14-option1" name="question14" value="0"> <label for="q14-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q14-option2" name="question14" value="1"> <label for="q14-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q14-option3" name="question14" value="2"> <label for="q14-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q14-option4" name="question14" value="3"> <label for="q14-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question15">불안하고 걱정되는 일이 많다</label>
+        <br>
+        <input type="radio" id="q15-option1" name="question15" value="0"> <label for="q15-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q15-option2" name="question15" value="1"> <label for="q15-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q15-option3" name="question15" value="2"> <label for="q15-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q15-option4" name="question15" value="3"> <label for="q15-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question16">고통이나 불편함을 느끼지 않는다</label>
+        <br>
+        <input type="radio" id="q16-option1" name="question16" value="0"> <label for="q16-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q16-option2" name="question16" value="1"> <label for="q16-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q16-option3" name="question16" value="2"> <label for="q16-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q16-option4" name="question16" value="3"> <label for="q16-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question17">불안한 상태에 있다</label>
+        <br>
+        <input type="radio" id="q17-option1" name="question17" value="0"> <label for="q17-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q17-option2" name="question17" value="1"> <label for="q17-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q17-option3" name="question17" value="2"> <label for="q17-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q17-option4" name="question17" value="3"> <label for="q17-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question18">자주 소화가 잘 안되고 뱃속이 불편하다</label>
+        <br>
+        <input type="radio" id="q18-option1" name="question18" value="0"> <label for="q18-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q18-option2" name="question18" value="1"> <label for="q18-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q18-option3" name="question18" value="2"> <label for="q18-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q18-option4" name="question18" value="3"> <label for="q18-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question19">가끔씩 기절할 것 같다</label>
+        <br>
+        <input type="radio" id="q19-option1" name="question19" value="0"> <label for="q19-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q19-option2" name="question19" value="1"> <label for="q19-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q19-option3" name="question19" value="2"> <label for="q19-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q19-option4" name="question19" value="3"> <label for="q19-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question20">자주 얼굴이 붉어지곤 한다</label>
+        <br>
+        <input type="radio" id="q20-option1" name="question20" value="0"> <label for="q20-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q20-option2" name="question20" value="1"> <label for="q20-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q20-option3" name="question20" value="2"> <label for="q20-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q20-option4" name="question20" value="3"> <label for="q20-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <label for="question21">땀을 많이 흘린다(더위로 인한 경우는 제외)</label>
+        <br>
+        <input type="radio" id="q21-option1" name="question21" value="0"> <label for="q21-option1">전혀 느끼지 않았다</label><br>
+        <input type="radio" id="q21-option2" name="question21" value="1"> <label for="q21-option2">조금 느꼈다</label><br>
+        <input type="radio" id="q21-option3" name="question21" value="2"> <label for="q21-option3">상당히 느꼈다</label><br>
+        <input type="radio" id="q21-option4" name="question21" value="3"> <label for="q21-option4">심하게 느꼈다</label><br>
+        <br>
+
+        <button type="submit">제출</button>
+    </form>
+    <a href="/">홈으로</a>
+</body>
+</html>

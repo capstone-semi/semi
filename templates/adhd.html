@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADHD 자가진단</title>
+    <link rel="stylesheet" href="static/style.css"> 
+    <script>
+        // 폼 제출 전에 체크된 문항을 검사하여 조건에 맞으면 리디렉션
+        function checkAnswers(event) {
+            let count = 0;
+            // 각 문항에 대해 체크된 값을 가져와서 조건에 맞는지 체크
+            for (let i = 1; i <= 6; i++) {
+                let questionValue = document.querySelector(`input[name="question${i}"]:checked`);
+                if (questionValue) {
+                    let value = parseInt(questionValue.value);
+                    // "약간 혹은 가끔 그렇다(2)", "자주 그렇다(3)", "매우 자주 그렇다(4)" 에 해당하는 경우
+                    if (value >= 2) {
+                        count++;
+                    }
+                }
+            }
+
+            // 4개 이상일 경우 응급콜 페이지로 리디렉션
+            if (count >= 4) {
+                window.location.href = "/emergency_call";  // 응급콜 페이지로 이동
+                event.preventDefault(); // 폼 제출을 막고 리디렉션
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>ADHD 자가진단</h1>
+    <form action="/submit_adhd" method="post">
+        <p>1. 어떤 일의 어려운 부분은 끝내놓고, 그 일을 마무리 짓지 못해 곤란을 겪은 일이 있습니까?</p>
+        <input type="radio" id="q1-option1" name="question1" value="0"> <label for="q1-option1">전혀 그렇지 않다</label><br>
+        <input type="radio" id="q1-option2" name="question1" value="1"> <label for="q1-option2">거의 그렇지 않다 (드물게 그렇다)</label><br>
+        <input type="radio" id="q1-option3" name="question1" value="2"> <label for="q1-option3">약간 혹은 가끔 그렇다</label><br>
+        <input type="radio" id="q1-option4" name="question1" value="3"> <label for="q1-option4">자주 그렇다</label><br>
+        <input type="radio" id="q1-option5" name="question1" value="4"> <label for="q1-option5">매우 자주 그렇다</label><br>
+
+        <p>2. 체계가 필요한 일을 해야 할 때, 순서대로 진행하기 어려운 경우가 있습니까?</p>
+        <input type="radio" id="q2-option1" name="question2" value="0"> <label for="q2-option1">전혀 그렇지 않다</label><br>
+        <input type="radio" id="q2-option2" name="question2" value="1"> <label for="q2-option2">거의 그렇지 않다 (드물게 그렇다)</label><br>
+        <input type="radio" id="q2-option3" name="question2" value="2"> <label for="q2-option3">약간 혹은 가끔 그렇다</label><br>
+        <input type="radio" id="q2-option4" name="question2" value="3"> <label for="q2-option4">자주 그렇다</label><br>
+        <input type="radio" id="q2-option5" name="question2" value="4"> <label for="q2-option5">매우 자주 그렇다</label><br>
+
+        <p>3. 약속이나 해야 할 일을 잊어버려 곤란을 겪은 일이 있습니까?</p>
+        <input type="radio" id="q3-option1" name="question3" value="0"> <label for="q3-option1">전혀 그렇지 않다</label><br>
+        <input type="radio" id="q3-option2" name="question3" value="1"> <label for="q3-option2">거의 그렇지 않다 (드물게 그렇다)</label><br>
+        <input type="radio" id="q3-option3" name="question3" value="2"> <label for="q3-option3">약간 혹은 가끔 그렇다</label><br>
+        <input type="radio" id="q3-option4" name="question3" value="3"> <label for="q3-option4">자주 그렇다</label><br>
+        <input type="radio" id="q3-option5" name="question3" value="4"> <label for="q3-option5">매우 자주 그렇다</label><br>
+
+        <p>4. 골치 아픈 일은 피하거나 미루는 경우가 있습니까?</p>
+        <input type="radio" id="q4-option1" name="question4" value="0"> <label for="q4-option1">전혀 그렇지 않다</label><br>
+        <input type="radio" id="q4-option2" name="question4" value="1"> <label for="q4-option2">거의 그렇지 않다 (드물게 그렇다)</label><br>
+        <input type="radio" id="q4-option3" name="question4" value="2"> <label for="q4-option3">약간 혹은 가끔 그렇다</label><br>
+        <input type="radio" id="q4-option4" name="question4" value="3"> <label for="q4-option4">자주 그렇다</label><br>
+        <input type="radio" id="q4-option5" name="question4" value="4"> <label for="q4-option5">매우 자주 그렇다</label><br>
+
+        <p>5. 오래 앉아있을 때, 손을 만지작거리거나 발을 꼼지락거리는 경우가 있습니까?</p>
+        <input type="radio" id="q5-option1" name="question5" value="0"> <label for="q5-option1">전혀 그렇지 않다</label><br>
+        <input type="radio" id="q5-option2" name="question5" value="1"> <label for="q5-option2">거의 그렇지 않다 (드물게 그렇다)</label><br>
+        <input type="radio" id="q5-option3" name="question5" value="2"> <label for="q5-option3">약간 혹은 가끔 그렇다</label><br>
+        <input type="radio" id="q5-option4" name="question5" value="3"> <label for="q5-option4">자주 그렇다</label><br>
+        <input type="radio" id="q5-option5" name="question5" value="4"> <label for="q5-option5">매우 자주 그렇다</label><br>
+
+        <p>6. 마치 모터가 달린 것처럼 과도하게 혹은 멈출 수 없이 활동을 하는 경우가 있습니까?</p>
+        <input type="radio" id="q6-option1" name="question6" value="0"> <label for="q6-option1">전혀 그렇지 않다</label><br>
+        <input type="radio" id="q6-option2" name="question6" value="1"> <label for="q6-option2">거의 그렇지 않다 (드물게 그렇다)</label><br>
+        <input type="radio" id="q6-option3" name="question6" value="2"> <label for="q6-option3">약간 혹은 가끔 그렇다</label><br>
+        <input type="radio" id="q6-option4" name="question6" value="3"> <label for="q6-option4">자주 그렇다</label><br>
+        <input type="radio" id="q6-option5" name="question6" value="4"> <label for="q6-option5">매우 자주 그렇다</label><br>
+        <!-- 추가 질문들 -->
+        <button type="submit">제출</button>
+    </form>
+    <a href="/">홈으로</a>
+</body>
+</html>

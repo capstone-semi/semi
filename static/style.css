@@ -1,0 +1,51 @@
+body {
+    background-color: #FEF6DF; /* 부드러운 배경색 */
+}
+
+h1 {
+    color: #4D6D67; /* 부드러운 어두운 톤 */
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333333; /* 텍스트 색상 */
+}
+
+a {
+    text-decoration: none;
+    color: #4D6D67; /* 링크 색상 변경 */
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #E74C3C; /* 호버 시 강조 색상 */
+}
+
+form {
+    background-color: #FFFFFF; /* 폼 배경색 */
+    padding: 20px;
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+button {
+    background-color: #4D6D67; /* 버튼 배경색 */
+    color: #FFFFFF; /* 버튼 텍스트 색상 */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* 모서리 둥글게 */
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease; /* 부드러운 색상 변화 */
+}
+
+button:hover {
+    background-color: #E74C3C; /* 호버 시 강조 색상 */
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정신건강 위기상담 | Emergency Call</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 스타일시트 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='menubar.css') }}">
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            background: #FEF6DF; /* 밝은 배경 */
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Header 스타일 */
+        header {
+            background-color: #4D6D67; /* 따뜻한 톤의 헤더 색상 */
+            color: #FFFFFF; /* 헤더 텍스트 색상 */
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        header p {
+            font-size: 16px;
+        }
+        
+        /* 컨테이너 */
+        .container {
+            width: 90%; /* 넓이를 조정 */
+            max-width: 800px; /* 최대 넓이 설정 */
+            margin-top: 20px; /* 헤더와 간격 */
+            padding: 20px;
+        }
+        
+        /* 섹션 스타일 */
+        .section {
+            background-color: #FFFFFF;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px; /* 둥근 모서리 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+        }
+        
+        .section h2 {
+            color: #4D6D67; /* 섹션 제목 색상 */
+            margin-bottom: 10px;
+            font-size: 20px;
+            border-bottom: 2px solid #EAEAEA; /* 하단 경계선 */
+            padding-bottom: 5px;
+        }
+        
+        .section p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333333; /* 텍스트 색상 */
+        }
+        
+        /* 강조 텍스트 */
+        .phone-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #E74C3C;
+            text-decoration: underline;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #27AE60;
+        }
+        
+        /* 목록 스타일 */
+        .services ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .services li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .services li:before {
+            content: "✔"; /* 체크 표시 */
+            color: #27AE60;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* 링크 스타일 */
+        a {
+            color: #4D6D67;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer 스타일 */
+        footer {
+            background-color: #4D6D67;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'menubar.html' %}
+<header>
+    <h1>정신건강 위기상담</h1>
+    <p>긴급한 상황에서 즉시 지원을 받으세요!</p>
+</header>
+
+<div class="container">
+    <section class="section">
+        <h2>정신건강 위기상담 전화</h2>
+        <p>정신건강 위기상담이 필요할 때는 아래의 번호로 즉시 연락하세요:</p>
+        <p class="phone-number">1577-0199</p>
+        <p>전국 어디에서나 전화를 걸면, 시·군·구별로 정신건강전문요원 등이 자살위기 상담, 정신건강 상담과 지지, 정신건강 정보 제공 및 정신의료기관 안내를 받을 수 있습니다.</p>
+    </section>
+
+    <section class="section">
+        <h2>긴급 상황에서 지원되는 서비스</h2>
+        <p>정신건강 위기 상황에서는 다음과 같은 서비스를 제공합니다:</p>
+        <div class="services">
+            <ul>
+                <li>정신건강 위기 상담 및 지지</li>
+                <li>자살위기 상담 및 개입</li>
+                <li>정신건강 정보 제공</li>
+                <li>정신의료기관 안내 및 치료 연계</li>
+                <li>위기 상황에서의 긴급 대응</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>운영 체계</h2>
+        <p>정신건강위기상담전화를 발신하면, 휴대전화 이용자 기준 가까운 기초 및 광역정신건강복지센터로 전화 연결됩니다. 야간 및 공휴일에는 광역정신건강복지센터로 연결됩니다.</p>
+    </section>
+
+    <section class="section">
+        <h2>기타 연락처 및 자원</h2>
+        <p><span class="highlight">국번 없이 129</span> (보건복지 콜센터)로도 상담을 받을 수 있습니다.</p>
+    </section>
+
+    <section class="section">
+        <h2>정신건강복지센터 안내</h2>
+        <p>정신건강복지센터에 대한 자세한 정보는 시·군·구 정신건강복지센터에 문의하시거나, 해당 센터에서 제공하는 서비스를 확인하세요.</p>
+        <p>자세한 정보는 <a href="https://www.mohw.go.kr" target="_blank">보건복지부 홈페이지</a>에서 확인할 수 있습니다.</p>
+    </section>
+</div>
+
+<footer>
+    <p>© 2024 정신건강복지센터 | 모든 권리 보유</p>
+</footer>
+
+</body>
+</html>

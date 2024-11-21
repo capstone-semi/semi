@@ -14,6 +14,13 @@
         <div class="write-container">
             <div class="header-bar">
             <h2>자가진단</h2>
+            <ul>
+                <li><a href="{{ url_for('app_bp.depression') }}">우울증 자가진단</a></li>
+                <li><a href="{{ url_for('app_bp.bipolar') }}">조울증 자가진단</a></li>
+                <li><a href="{{ url_for('app_bp.ptsd') }}">PTSD 자가진단</a></li>
+                <li><a href="{{ url_for('app_bp.adhd') }}">ADHD 자가진단</a></li>
+                <li><a href="{{ url_for('app_bp.anxiety') }}">불안장애 자가진단</a></li>
+            </ul>
         </div>
     </div>
 </body>
