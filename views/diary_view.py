@@ -20,11 +20,12 @@ def write_diary():
         diary = save_diary(uid, title, content)
         if diary is None:
             flash('오늘은 이미 일기를 작성하셨습니다.')
-            return redirect(url_for('diary_bp.view_diary', date=datetime.date.today().strftime('%Y-%m-%d')))
+            return redirect(url_for('diary_bp.view_diary', date=datetime.today().strftime('%Y-%m-%d')))
 
         flash('일기가 저장되었습니다.')
-        return redirect(url_for('diary_bp.view_diary', date=datetime.date.today().strftime('%Y-%m-%d')))
+        return redirect(url_for('diary_bp.view_diary', date=datetime.today().strftime('%Y-%m-%d')))
     
+    # 오늘 날짜 생성
     current_date = datetime.now().strftime("%Y년 %m월 %d일")
     return render_template('diaryWrite.html', current_date=current_date)
 
@@ -36,12 +37,12 @@ def view_diary():
     if date_str:
         selected_date = datetime.strptime(date_str, '%Y-%m-%d').date()
     else:
-        selected_date = datetime.date.today()
+        selected_date = datetime.today().date()
     
     diary = get_diary_by_date(uid, selected_date)
     if not diary:
         flash(f"{selected_date.strftime('%Y-%m-%d')}에 작성된 일기가 없습니다.")
-        return render_template('diaryDetail.html', diary=None)
+        return render_template('home.html', diary=None)
     
     analyses = get_analyses_by_diary(diary.diaryid)
     # 가장 높은 확률의 질병 찾기
@@ -50,7 +51,7 @@ def view_diary():
     highest_probability = highest_analysis.probability
 
     return render_template(
-        'diaryDetail.html',
+        'home.html',
         diary=diary,
         analyses=analyses,
         highest_disease_name=highest_disease_name,

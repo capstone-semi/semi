@@ -76,9 +76,13 @@ def home():
 
     # 날짜 선택 기능
     date_str = request.args.get('date')
-    if date_str:
-        selected_date = datetime.strptime(date_str, '%Y-%m-%d').date()
-    else:
+    try:
+        if date_str:
+            selected_date = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
+        else:
+            selected_date = datetime.date.today()
+    except ValueError:
+        # 날짜 형식이 잘못된 경우 기본값으로 오늘 날짜 설정
         selected_date = datetime.date.today()
 
     # 변수를 미리 초기화

@@ -16,25 +16,25 @@
         <div class="calendar-container">
             <!-- 월 선택 -->
             <div class="month-header">
-                <span id="current-month">9월</span>
+                <span id="current-month">{{ selected_date.strftime('%m월') }}</span>
                 <button id="calendar-icon"><img src="../static/icons/calendar.svg" alt="캘린더 아이콘"></button>
             </div>
             <!-- 날짜 표시 -->
             <div class="date-list">
-                <span class="date" id="date-17">17</span>
-                <span class="date" id="date-18">18</span>
-                <span class="date" id="date-19">19</span>
-                <span class="date" id="date-20">20</span>
-                <span class="date" id="date-21">21</span>
-                <span class="date" id="date-22">22</span>
-                <span class="date" id="date-23">23</span>
+                {% for day in range(17, 24) %}
+                    <span
+                        class="date {% if selected_date.day == day %}selected{% endif %}"
+                        onclick="selectDate(`{{ selected_date.strftime('%Y-%m') }}-{{ '%02d'|format(day) }}`)">
+                        {{ day }}
+                    </span>
+                {% endfor %}
             </div>
         </div>
 
-        <!-- PTSD 분석 결과 -->
+        <!-- 일기 분석 결과 -->
         <div class="analysis-container">
             <div class="header">
-                <p>2024.10.13 19:08</p>
+                <p>{{ diary.diarydate.strftime('%Y.%m.%d') }} 19:08</p>
                 <h2>오늘의 일기 분석결과</h2>
                 <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
             </div>
@@ -89,7 +89,7 @@
             <div class="diary-content">
                 <p>{{ diary.content }}</p>
             </div>
-            <button class="write-icon" onclick="goToWritePage()">
+            <button class="write-icon" onclick="showErrorModal()">
                 <img src="../static/icons/pen.svg" alt="연필 아이콘">
             </button>
         </div>
@@ -111,10 +111,36 @@
             </div>
         {% endif %}
     </div>
+
+    <!-- 모달 -->
+    <div class="modal" id="errorModal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modalTitle">일기 중복</h2>
+            <p id="modalMessage">일기는 하루에 한 번만 작성할 수 있습니다.</p>
+            <button id="closeModal">닫기</button>
+        </div>
+    </div>
+
     <script src="../static/js/home.js"></script>
     <script>
         function goToWritePage() {
-            window.location.href = "/diaryWrite";
+            window.location.href = "diary/diaryWrite";
+        }
+    </script>
+    <script>
+        function selectDate(date) {
+            window.location.href = `/home?date=${date}`;
+        }
+        function showErrorModal() {
+            // 모달을 표시
+            const modal = document.getElementById("errorModal");
+            modal.style.display = "flex";
+
+            // 닫기 버튼 이벤트 리스너
+            const closeModalButton = document.getElementById("closeModal");
+            closeModalButton.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
         }
     </script>
 </body>
