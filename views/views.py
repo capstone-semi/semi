@@ -13,11 +13,6 @@ def main():
 def signup():
     return render_template('signup.html')
 
-@app.route('/diaryWrite')
-@login_required
-def diaryWrite():
-    return render_template('diaryWrite.html')
-
 @app.route('/test')
 def test():
     return render_template('test.html')

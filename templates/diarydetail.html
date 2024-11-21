@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윌리어리</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='menubar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+<body>
+    {% include 'menubar.html' %}
+    <div class="container">
+        <div class="write-container">
+            <div class="header-bar">
+            <h2>다이어리 상세보기</h2>
+        </div>
+    </div>
+
+</body>
+</html>
