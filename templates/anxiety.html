@@ -20,15 +20,40 @@
 
             // 총점이 16점 이상일 경우 응급콜 페이지로 리디렉션
             if (totalScore >= 16) {
-                window.location.href = "/emergency_call";  // 응급콜 페이지로 이동
+                // 응급콜 페이지로 이동
+                goCallModal();  // 기존처럼 모달을 통해 응급콜 메시지 표시
                 event.preventDefault(); // 폼 제출을 막고 리디렉션
+            } else {
+                // 점수가 16점 미만일 경우 정상 메시지 표시
+                goHomeModal(); // '정상' 메시지 모달
+                event.preventDefault(); // 폼 제출을 막음
             }
+        }
+
+        // 응급콜 모달 표시 함수
+        function goCallModal() {
+            const modal = document.getElementById("callModal");
+            modal.style.display = "block"; // 모달 보이기
+        }
+
+        // 정상 메시지 모달 표시 함수
+        function goHomeModal() {
+            const modal = document.getElementById("homeModal");
+            modal.style.display = "block"; // 모달 보이기
+        }
+
+        // 모달 닫기 함수
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "none"; // 모달 숨기기
         }
     </script>
 </head>
 <body>
+    <button class="back-button" onclick="goBack()">&#60;</button>
     <h1>불안장애 자가진단</h1>
-    <form action="/submit_anxiety" method="post">
+    <h3>아래에 적혀 있는 문항을 읽으신 후 지난 일주일 동안 느끼고 행동한 것을 가장 잘 나타내는 곳에 체크해 주십시오.</h3>
+    <form action="/submit_anxiety" method="post" onsubmit="checkAnswers(event)">
         <label for="question1">1. 가끔씩 몸이 저리고 쑤시며 감각이 마비된 느낌을 받는다</label>
         <br>
         <input type="radio" id="q1-option1" name="question1" value="0"> <label for="q1-option1">전혀 느끼지 않았다</label><br>
@@ -197,8 +222,56 @@
         <input type="radio" id="q21-option4" name="question21" value="3"> <label for="q21-option4">심하게 느꼈다</label><br>
         <br>
 
-        <button type="submit">제출</button>
+        <button type="submit" class="submit">제출</button>
     </form>
-    <a href="/home">홈으로</a>
+   <!-- 정상모달 -->
+   <div class="modal" id="errorModal" style="display: none;">
+    <div class="modal-content">
+        <h2 id="modalTitle">결과</h2>
+        <p id="modalMessage">정상입니다. <br>홈 페이지로 연결됩니다.</p>
+        <button id="closeModal">닫기</button>
+    </div>
+</div>
+<!-- 비정상모달 -->
+<div class="modal" id="warningModal" style="display: none;">
+    <div class="modal-content">
+        <h2 id="modalTitle">결과</h2>
+        <p id="modalMessage">주의가 필요합니다. <br> 응급콜 페이지로 연결됩니다.</p>
+        <button id="closedModal">닫기</button>
+    </div>
+</div>
+
+    <script src="../static/js/home.js"></script>
+    <script>
+        function goHomeModal() {
+            // 모달을 표시
+            const modal = document.getElementById("errorModal");
+            modal.style.display = "flex";
+
+            // 닫기 버튼 이벤트 리스너
+            const closeModalButton = document.getElementById("closeModal");
+            closeModalButton.addEventListener("click", () => {
+                modal.style.display = "none";
+                window.location.href="/home";
+            });
+        }
+        function goCallModal() {
+            // 모달을 표시
+            const modal = document.getElementById("warningModal");
+            modal.style.display = "flex";
+
+            // 닫기 버튼 이벤트 리스너
+            const closeModalButton = document.getElementById("closedModal");
+            closeModalButton.addEventListener("click", () => {
+                modal.style.display = "none";
+                window.location.href="/emergency_call";
+            });
+        }
+    </script>
+    <script>
+        function goBack() {
+            window.location.href="/test";
+        }
+    </script>
 </body>
 </html>

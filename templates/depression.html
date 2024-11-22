@@ -9,6 +9,7 @@
         // 폼 제출 전에 체크된 문항을 검사하여 총점이 25점 이상이면 리디렉션
         function checkAnswers(event) {
             let totalScore = 0;
+
             // 각 문항에 대해 체크된 값을 가져와서 점수를 합산
             for (let i = 1; i <= 20; i++) {
                 let questionValue = document.querySelector(`input[name="question${i}"]:checked`);
@@ -18,17 +19,41 @@
                 }
             }
 
-            // 총점이 25점 이상일 경우 응급콜 페이지로 리디렉션
+            // 총점이 25점 이상일 경우 응급콜 모달을 표시
             if (totalScore >= 25) {
-                window.location.href = "/emergency_call";  // 응급콜 페이지로 이동
+                goCallModal(); // 응급콜 모달을 표시하는 함수 호출
                 event.preventDefault(); // 폼 제출을 막고 리디렉션
+            } else {
+                goHomeModal(); // 정상 메시지 모달을 표시하는 함수 호출
+                event.preventDefault(); // 폼 제출을 막음
             }
+        }
+
+        // 응급콜 모달 표시 함수
+        function goCallModal() {
+            const modal = document.getElementById("callModal");
+            modal.style.display = "block"; // 모달 보이기
+        }
+
+        // 정상 메시지 모달 표시 함수
+        function goHomeModal() {
+            const modal = document.getElementById("homeModal");
+            modal.style.display = "block"; // 모달 보이기
+        }
+
+        // 모달 닫기 함수
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "none"; // 모달 숨기기
         }
     </script>
 </head>
 <body>
+    <button class="back-button" onclick="goBack()">&#60;</button>
     <h1>우울증 자가진단</h1>
-    <form action="/submit_depression" method="post">
+    <h3>아래에 적혀 있는 문항을 읽으신 후 지난 일주일 동안 느끼고 행동한 것을 가장 잘 나타내는 곳에 체크해 주십시오.</h3>
+    <form action="/submit_depression" method="post" onsubmit="checkAnswers(event)">
+
         <label for="question1">1. 평소에는 아무렇지도 않은 일들이 귀찮게 느껴졌다</label>
         <br>
         <input type="radio" id="q1-option1" name="question1" value="0"> <label for="q1-option1">극히 드물다(0~1일)</label><br>
@@ -190,9 +215,56 @@
         <br>
 
 
-        <!-- 추가 질문들 -->
-        <button type="submit">제출</button>
+        <button type="submit" class="submit">제출</button>
     </form>
-    <a href="/home">홈으로</a>
+   <!-- 정상모달 -->
+   <div class="modal" id="errorModal" style="display: none;">
+    <div class="modal-content">
+        <h2 id="modalTitle">결과</h2>
+        <p id="modalMessage">정상입니다. <br>홈 페이지로 연결됩니다.</p>
+        <button id="closeModal">닫기</button>
+    </div>
+</div>
+<!-- 비정상모달 -->
+<div class="modal" id="warningModal" style="display: none;">
+    <div class="modal-content">
+        <h2 id="modalTitle">결과</h2>
+        <p id="modalMessage">주의가 필요합니다. <br> 응급콜 페이지로 연결됩니다.</p>
+        <button id="closedModal">닫기</button>
+    </div>
+</div>
+
+    <script src="../static/js/home.js"></script>
+    <script>
+        function goHomeModal() {
+            // 모달을 표시
+            const modal = document.getElementById("errorModal");
+            modal.style.display = "flex";
+
+            // 닫기 버튼 이벤트 리스너
+            const closeModalButton = document.getElementById("closeModal");
+            closeModalButton.addEventListener("click", () => {
+                modal.style.display = "none";
+                window.location.href="/home";
+            });
+        }
+        function goCallModal() {
+            // 모달을 표시
+            const modal = document.getElementById("warningModal");
+            modal.style.display = "flex";
+
+            // 닫기 버튼 이벤트 리스너
+            const closeModalButton = document.getElementById("closedModal");
+            closeModalButton.addEventListener("click", () => {
+                modal.style.display = "none";
+                window.location.href="/emergency_call";
+            });
+        }
+    </script>
+    <script>
+        function goBack() {
+            window.location.href="/test";
+        }
+    </script>
 </body>
 </html>

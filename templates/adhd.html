@@ -35,7 +35,9 @@
     </script>
 </head>
 <body>
+    <button class="back-button" onclick="goBack()">&#60;</button>
     <h1>ADHD 자가진단</h1>
+    <h3>아래에 적혀 있는 문항을 읽으신 후 지난 일주일 동안 느끼고 행동한 것을 가장 잘 나타내는 곳에 체크해 주십시오.</h3>
     <form action="/submit_adhd" method="post" onsubmit="checkAnswers(event)">
         <p>1. 어떤 일의 어려운 부분은 끝내놓고, 그 일을 마무리 짓지 못해 곤란을 겪은 일이 있습니까?</p>
         <input type="radio" id="q1-option1" name="question1" value="0"> <label for="q1-option1">전혀 그렇지 않다</label><br>
@@ -79,14 +81,13 @@
         <input type="radio" id="q6-option4" name="question6" value="3"> <label for="q6-option4">자주 그렇다</label><br>
         <input type="radio" id="q6-option5" name="question6" value="4"> <label for="q6-option5">매우 자주 그렇다</label><br>
 
-        <button type="submit">제출</button>
+        <button type="submit" class="submit">제출</button>
     </form>
-    <a href="/home">홈으로</a>
     <!-- 정상모달 -->
     <div class="modal" id="errorModal" style="display: none;">
         <div class="modal-content">
             <h2 id="modalTitle">결과</h2>
-            <p id="modalMessage">정상입니다</p>
+            <p id="modalMessage">정상입니다. <br>홈 페이지로 연결됩니다.</p>
             <button id="closeModal">닫기</button>
         </div>
     </div>
@@ -94,7 +95,7 @@
     <div class="modal" id="warningModal" style="display: none;">
         <div class="modal-content">
             <h2 id="modalTitle">결과</h2>
-            <p id="modalMessage">주의가 필요합니다</p>
+            <p id="modalMessage">주의가 필요합니다. <br> 응급콜 페이지로 연결됩니다.</p>
             <button id="closedModal">닫기</button>
         </div>
     </div>
@@ -124,6 +125,11 @@
                 modal.style.display = "none";
                 window.location.href="/emergency_call";
             });
+        }
+    </script>
+    <script>
+        function goBack() {
+            window.location.href="/test";
         }
     </script>
 </body>

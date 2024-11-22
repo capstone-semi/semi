@@ -3,7 +3,20 @@ body {
 }
 
 h1 {
-    color: #4D6D67; /* 부드러운 어두운 톤 */
+    margin: 0;
+    font-size: 20px; /* font-size를 25x에서 20px로 수정 */
+    color: #4D6D67;
+    position: absolute; 
+    left: 50%; /* 화면 중앙 */
+    top: 20px; /* 상단 여백 */
+    transform: translateX(-50%); /* 정확히 중앙에 위치 */
+}
+
+h3 {
+    margin: 10px 0; /* 위 아래 여백 추가 */
+    font-size: 14px; /* 글씨 크기 줄임 */
+    color: #888888; /* 회색으로 변경 */
+    margin-top: 65px;
 }
 
 ul {
@@ -32,9 +45,11 @@ form {
     padding: 20px;
     border-radius: 10px; /* 모서리 둥글게 */
     border :1px solid #4D6D67;
+    margin-top: 20px; /* form과 h1, h3가 겹치지 않도록 상단 여백 추가 */
+    position: relative;
 }
 
-button {
+.submit {
     background-color: #4D6D67; /* 버튼 배경색 */
     color: #FFFFFF; /* 버튼 텍스트 색상 */
     border: none;
@@ -43,12 +58,26 @@ button {
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease; /* 부드러운 색상 변화 */
+    position :absolute;
+    right :10px;
+    bottom :10px;
 }
 
-button:hover {
+.submit:hover {
     background-color: #E74C3C; /* 호버 시 강조 색상 */
 }
 
+.back-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #4D6D67;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    left: 10px; /* 왼쪽 상단에 배치 */
+    top: 20px; /* 상단 여백 추가 */
+}
 
 /* 모달 */
 .modal {
@@ -83,4 +112,3 @@ button:hover {
     margin : 10px;
     font-size : 14px;
 }
-
