@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, height=844, initial-scale=1.0">
+    <title>가까운 병원 찾기</title>
+    <style>
+        /* 모든 요소에 대한 기본 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body, html {
+            height: 100%; 
+            width: 100%;
+            background: #FEF6DF; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+    
+        /* 컨텐츠 박스 설정 */
+        .container {
+            width: 100%;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            background-color: #FEF6DF; /* 흰색 배경 */
+        }
+    
+        /* 헤더 바 스타일 */
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: #4D6D67; 
+            border-radius: 10px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    
+        .header-bar h1 {
+            margin: 0;
+            font-size: 22px; /* iPhone 화면에 맞게 폰트 사이즈 조정 */
+        }
+    
+        /* 병원 목록 스타일 */
+        .hospital-list {
+            list-style: none;
+            padding: 0;
+        }
+    
+        .hospital-item {
+            background-color: #f9fafb; /* 항목 배경색 */
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .hospital-item:hover {
+            transform: translateY(-5px); /* 항목 hover 시 살짝 떠오르는 효과 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        .hospital-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3a34; /* 병원 이름 색상 */
+            margin-bottom: 8px;
+        }
+    
+        .hospital-info {
+            font-size: 14px;
+            color: #5a5a5a;
+            margin-bottom: 4px;
+        }
+    
+        .hospital-info strong {
+            color: #333;
+        }
+    
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+    
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header-bar">
+        <h1>가까운 병원 찾기</h1>
+    </header>
+
+    <h2 style="text-align: center; font-size: 22px; margin-bottom: 25px;">근처 병원 목록</h2>
+
+    <ul class="hospital-list">
+        <li class="hospital-item">
+            <div class="hospital-name">서울 종합병원</div>
+            <div class="hospital-info"><strong>주소:</strong> 서울특별시 강남구 테헤란로 123</div>
+            <div class="hospital-info"><strong>전화:</strong> 02-1234-5678</div>
+        </li>
+        <li class="hospital-item">
+            <div class="hospital-name">서울 대형 병원</div>
+            <div class="hospital-info"><strong>주소:</strong> 서울특별시 송파구 올림픽로 456</div>
+            <div class="hospital-info"><strong>전화:</strong> 02-9876-5432</div>
+        </li>
+        <li class="hospital-item">
+            <div class="hospital-name">강남 클리닉</div>
+            <div class="hospital-info"><strong>주소:</strong> 서울특별시 강남구 역삼로 789</div>
+            <div class="hospital-info"><strong>전화:</strong> 02-2468-1357</div>
+        </li>
+        <li class="hospital-item">
+            <div class="hospital-name">홍대 병원</div>
+            <div class="hospital-info"><strong>주소:</strong> 서울특별시 마포구 홍익로 101</div>
+            <div class="hospital-info"><strong>전화:</strong> 02-3456-7890</div>
+        </li>
+    </ul>
+
+    <footer>
+        <p>근처 위치입니다...도움을 요청하세요...</p>
+    </footer>
+</div>
+
+</body>
+</html>
