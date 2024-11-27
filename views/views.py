@@ -59,3 +59,7 @@ def emergency_call():
 @app.route('/hospital')
 def hospital():
     return render_template('hospital.html')
+
+@app.route('/challenge_list')
+def challenge_list():
+    return render_template('challenge_list.html')

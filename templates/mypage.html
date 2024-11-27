@@ -52,7 +52,7 @@
                 </div>
                 <span class="arrow">></span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="{{ url_for('app_bp.challenge_list') }}"  class="menu-item">
                 <div class="menu-icon-text">
                     <img src="{{ url_for('static', filename='icons/mychallenge.svg') }}" alt="챌린지 아이콘" class="icon">
                     참여하고 있는 챌린지
@@ -63,6 +63,13 @@
                 <div class="menu-icon-text">
                     <img src="{{ url_for('static', filename='icons/mycall.svg') }}" alt="응급콜 아이콘" class="icon">
                     응급콜
+                </div>
+                <span class="arrow">></span>
+            </a>
+            <a href="{{ url_for('app_bp.hospital') }}"  class="menu-item">
+                <div class="menu-icon-text">
+                    <img src="{{ url_for('static', filename='icons/hospital.svg') }}" alt="응급콜 아이콘" class="icon">
+                    병원 정보
                 </div>
                 <span class="arrow">></span>
             </a>

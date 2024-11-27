@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='menubar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
 </head>
-<body>
     {% include 'menubar.html' %}
     <div class="container">
         <div class="write-container">
@@ -16,6 +15,45 @@
             <h2>통계</h2>
         </div>
     </div>
+
+    <body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+          <h1>분석결과</h1>
+        </header>
+    
+        <!-- 마음추이 그래프 -->
+        <section class="graph-section">
+          <h2>마음추이 그래프</h2>
+          <div class="graph">
+            <img src="{{ url_for('static', filename='icons/result_group.svg') }}" alt="마음추이그래프" class="icon">
+            <canvas id="trendGraph"></canvas>
+          </div>
+        </section>
+    
+        <!-- 마음분포 차트 -->
+        <section class="chart-section">
+          <h2>마음분포 차트</h2>
+          <div class="chart-content">
+            <img src="{{ url_for('static', filename='icons/result_chart.svg') }}" alt="차트" class="icon">
+          </div>
+        </section>
+    
+        <!-- 패턴 분석 그래프 -->
+        <section class="pattern-section">
+          <h2>패턴 분석 그래프</h2>
+          <div class="pattern-bars">
+            <div class="bar adhd"><span>ADHD</span><div style="width: 100%;"></div><span>100일</span></div>
+            <div class="bar depression"><span>우울증</span><div style="width: 60%;"></div><span>60일</span></div>
+            <div class="bar anxiety"><span>불안장애</span><div style="width: 30%;"></div><span>30일</span></div>
+            <div class="bar ptsd"><span>PTSD</span><div style="width: 70%;"></div><span>70일</span></div>
+            <div class="bar ptsd"><span>조울증</span><div style="width: 70%;"></div><span>70일</span></div>
+          </div>
+        </section>
+      </div>
+</body>
+</html>
 
 </body>
 </html>

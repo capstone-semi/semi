@@ -9,7 +9,7 @@
         <li class="{% if request.path == '/challenge' %}active{% endif %}">
             <a href="{{ url_for('app_bp.challenge') }}"><img src="{{ url_for('static', filename='icons/challenge.svg') }}" alt="챌린지 아이콘" class="icon"> 챌린지</a>
         </li>
-        <li class="{% if request.path == '/result' %}active{% endif %}">
+        <li class="{% if request.path == '/re' %}active{% endif %}">
             <a href="{{ url_for('app_bp.result') }}"><img src="{{ url_for('static', filename='icons/result.svg') }}" alt="통계 아이콘" class="icon"> 통계</a>
         </li>
         <li class="{% if request.path == '/mypage' %}active{% endif %}">

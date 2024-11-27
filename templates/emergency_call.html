@@ -50,7 +50,6 @@
             margin-bottom: 15px;
             padding: 20px;
             border-radius: 10px; /* 둥근 모서리 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
         }
         
         .section h2 {
@@ -158,7 +157,7 @@
     {% include 'menubar.html' %}
     <div class="header-bar">
         <button class="back-button" onclick="goBack()">&#60;</button>
-        </div>
+    </div>
 <header>
     
     <h1>정신건강 위기상담</h1>
@@ -195,6 +194,11 @@
     </section>
 
     <section class="section">
+        <h2>병원 정보</h2>
+        <p>가까운 병원 정보를 확인하려면 <a href="hospital">여기</a>를 클릭하세요.</p>
+    </section>
+
+    <section class="section">
         <h2>기타 연락처 및 자원</h2>
         <p><span class="highlight">국번 없이 129</span> (보건복지 콜센터)로도 상담을 받을 수 있습니다.</p>
     </section>
@@ -216,3 +220,4 @@
 </script>
 </body>
 </html>
+
