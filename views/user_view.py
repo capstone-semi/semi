@@ -10,7 +10,7 @@ from semi.models.user_model import User
 user_bp = Blueprint('user_bp', __name__)
 
 def is_logged_in():
-    return 'uid' in session\
+    return 'uid' in session
     
 def login_required(func):
     def wrapper(*args, **kwargs):
@@ -80,14 +80,22 @@ def home():
         if date_str:
             selected_date = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
         else:
-            selected_date = datetime.date.today()
+            selected_date = datetime.datetime.now().date()
     except ValueError:
         # 날짜 형식이 잘못된 경우 기본값으로 오늘 날짜 설정
-        selected_date = datetime.date.today()
-
+        selected_date = datetime.datetime.now().date()
+        
+    selected_date_str = selected_date.strftime('%Y-%m-%d')
     # 변수를 미리 초기화
     highest_disease_name = None
     highest_probability = None
+
+    current_time = datetime.datetime.now() 
+
+    today = datetime.datetime.now().date()
+    # 오늘을 중심으로 주를 계산하여 날짜 범위 생성
+    week_start = today - datetime.timedelta(days=3)
+    dates = [(week_start + datetime.timedelta(days=i)).strftime('%Y-%m-%d') for i in range(7)]
         
     diary = get_diary_by_date(uid, selected_date)
     if diary:
@@ -111,7 +119,9 @@ def home():
         analyses=analyses,
         highest_disease_name=highest_disease_name,
         highest_probability=highest_probability,
-        selected_date=selected_date
+        selected_date=selected_date_str,
+        current_time = current_time,
+        dates=dates, today=today
     )
 
 @user_bp.route('/logout')

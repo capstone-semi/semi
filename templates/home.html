@@ -11,30 +11,38 @@
 <body>
     {% include 'menubar.html' %}
     <div class="container">
-        <h2>오늘의 기록</h2>
+        <div class="write-container">
+            <div class="header-bar">
+            <h2>오늘의 기록</h2>
+        </div>
         <!-- 달력 -->
         <div class="calendar-container">
             <!-- 월 선택 -->
             <div class="month-header">
-                <span id="current-month">{{ selected_date.strftime('%m월') }}</span>
+                <span id="current-month">{{ selected_date.split('-')[1] }}월</span>
                 <button id="calendar-icon"><img src="{{ url_for('static', filename='icons/Calendar.svg') }}" alt="캘린더 아이콘" class="icon"></button>
             </div>
             <!-- 날짜 표시 -->
             <div class="date-list">
-                {% for day in range(17, 24) %}
-                    <span
-                        class="date {% if selected_date.day == day %}selected{% endif %}"
-                        onclick="selectDate(`{{ selected_date.strftime('%Y-%m') }}-{{ '%02d'|format(day) }}`)">
-                        {{ day }}
-                    </span>
+                {% for date in dates %}
+                <span class="date {% if date == today %}selected{% endif %}"
+                    id="date-{{ date.split('-')[2] }}"
+                    onclick="selectDate('{{ date }}')">
+                    {{ date.split('-')[2] }}
+                </span>
                 {% endfor %}
             </div>
-        </div>
+            
 
         <!-- 일기 분석 결과 -->
         <div class="analysis-container">
             <div class="header">
-                <p> 19:08</p>
+                <p> {% if diary %}
+                    <p> {{ diary.diarydate.strftime('%Y-%m-%d') }}</p>
+                    {% else %}
+                    <p>{{ current_time.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                    {% endif %}
+                </p>
                 <h2>오늘의 일기 분석결과</h2>
                 <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
             </div>
@@ -97,13 +105,13 @@
             <div class="diary-container">
                 <div class="diary-header">
                     <div class="date-title">
-                        <p class="date">{{ selected_date.strftime('%Y-%m-%d') }}</p>
+                        <p class="date">{{ selected_date }}</p>
                         <h2 class="title">다이어리</h2>
                     </div>
                 </div>
                 <img src="../static/icons/line.svg" alt="분석결과 구분선" class="divider-image">
                 <div class="diary-content">
-                    <p>{{ selected_date.strftime('%Y-%m-%d') }}에 작성된 일기가 없습니다.</p>
+                    <p>{{ selected_date }}에 작성된 일기가 없습니다.</p>
                 </div>
                 <button class="write-icon" onclick="goToWritePage()">
                     <img src="../static/icons/pen.svg" alt="연필 아이콘">

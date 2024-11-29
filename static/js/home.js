@@ -1,7 +1,5 @@
-// scripts.js
-// 오늘 날짜 가져오기
 const today = new Date();
-const todayDate = today.getDate();
+const todayDate = today.getDate(); // 일자만 추출
 const currentMonth = today.getMonth() + 1; // 월은 0부터 시작
 
 // 현재 월 표시
@@ -13,3 +11,4 @@ const dateElement = document.getElementById(`date-${todayDate}`);
 if (dateElement) {
     dateElement.classList.add("selected");
 }
+
