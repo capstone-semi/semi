@@ -7,6 +7,11 @@ from semi.models.diary_model import Diary
 from semi.models.mission_model import Mission
 from semi import db
 from semi.models.disease_model import Disease
+from dotenv import load_dotenv
+import openai
+
+# .env 파일 로드
+load_dotenv()
 
 def save_diary(uid, title, content):
     # 오늘 날짜의 일기가 이미 있는지 확인
@@ -88,24 +93,24 @@ def generate_mission(diary):
 
     # 프롬프트 생성
     if recommended_actions:
-        prompt = f"""너는 심리상담가로써 다음 사람의 일기를 보고 한 줄 정도의 적당한 미션을 줘야해.
+        prompt = f"""너는 심리상담가로써 다음 사람의 일기를 보고 100자 이내 적당한 미션 한 개를 줘야해.
                         제목: {diary.title}
                         내용: {diary.content}
                         정신질환 {highest_disease_name}일 확률 {highest_probability:.2f}%
                         보건복지부에서 해당 질환에 대해 추천하는 행동: {recommended_actions}
                     """
     else:
-        prompt = f"""너는 심리상담가로써 다음 사람의 일기를 보고 한 줄 정도의 적당한 미션을 줘야해.
+        prompt = f"""너는 심리상담가로써 다음 사람의 일기를 보고 100자 이내 적당한 미션 한 개를 줘야해.
                     제목: {diary.title}
                     내용: {diary.content}
                 """
 
     # OpenAI API 키 설정 (환경 변수 또는 설정 파일에서 가져오기)
-    openai.api_key = ''
+    openai.api_key = os.getenv("OPENAI_API_KEY")
 
     # GPT-4 모델을 사용하여 미션 생성
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": "당신은 전문 심리상담가입니다."},
             {"role": "user", "content": prompt}
@@ -145,4 +150,4 @@ def get_recommended_actions(disease_name):
             recommendations = file.read()
         return recommendations
     except FileNotFoundError:
-        return None  # 파일이 없으면 추천 행동을 포함하지 않음 #
+        return None  # 파일이 없으면 추천 행동을 포함하지 않음 ##
