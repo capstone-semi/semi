@@ -145,4 +145,4 @@ def get_recommended_actions(disease_name):
             recommendations = file.read()
         return recommendations
     except FileNotFoundError:
-        return None  # 파일이 없으면 추천 행동을 포함하지 않음
+        return None  # 파일이 없으면 추천 행동을 포함하지 않음 #
