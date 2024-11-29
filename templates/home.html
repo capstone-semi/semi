@@ -83,6 +83,13 @@
             {% endif %}
         </div>
 
+        {% if mission %}
+    <div class="mission">
+        <h3>오늘의 미션</h3>
+        <p>{{ mission.content }}</p>
+    </div>
+{% endif %}
+
         <!-- 일기 -->
         {% if diary %}
         <div class="diary-container">

@@ -10,3 +10,4 @@ class Analysis(db.Model):
 
     diary = db.relationship('Diary', back_populates='analyses')
     disease = db.relationship('Disease', back_populates='analyses')
+    

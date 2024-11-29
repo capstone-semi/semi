@@ -1,6 +1,7 @@
 import datetime
 from flask import Blueprint, request, render_template, redirect, url_for, session, flash
 from semi.controllers.diary_controllers import get_analyses_by_diary, get_diary_by_date, get_disease_name, save_diary
+from semi.models.mission_model import Mission
 from semi.views.user_view import login_required
 
 diary_bp = Blueprint('diary_bp', __name__)
@@ -59,7 +60,8 @@ def view_diary():
             today=formatted_today,
             analyses=[],  # 빈 분석 리스트도 전달
             highest_disease_name=None,
-            highest_probability=None
+            highest_probability=None,
+            mission=None
         )
     
     analyses = get_analyses_by_diary(diary.diaryid)
@@ -71,6 +73,8 @@ def view_diary():
         highest_disease_name = None
         highest_probability = None
 
+    mission = Mission.query.filter_by(diaryId=diary.diaryid).first()
+
     return render_template(
         'home.html',
         diary=diary,
@@ -79,5 +83,6 @@ def view_diary():
         highest_probability=highest_probability,
         selected_date=formatted_selected_date,
         dates=dates,
-        today=formatted_today
+        today=formatted_today,
+        mission=mission
     )
